@@ -15,9 +15,11 @@ class UsuariosTest < ApplicationSystemTestCase
     click_on "New Usuario"
 
     fill_in "Apellido", with: @usuario.apellido
+    fill_in "Contrasena", with: @usuario.contrasena
     fill_in "Edad", with: @usuario.edad
     fill_in "Email", with: @usuario.email
     fill_in "Nombre", with: @usuario.nombre
+    fill_in "Rol", with: @usuario.rol_id
     click_on "Create Usuario"
 
     assert_text "Usuario was successfully created"
@@ -29,9 +31,11 @@ class UsuariosTest < ApplicationSystemTestCase
     click_on "Edit", match: :first
 
     fill_in "Apellido", with: @usuario.apellido
+    fill_in "Contrasena", with: @usuario.contrasena
     fill_in "Edad", with: @usuario.edad
     fill_in "Email", with: @usuario.email
     fill_in "Nombre", with: @usuario.nombre
+    fill_in "Rol", with: @usuario.rol_id
     click_on "Update Usuario"
 
     assert_text "Usuario was successfully updated"

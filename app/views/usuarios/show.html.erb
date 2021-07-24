@@ -11,13 +11,27 @@
 </p>
 
 <p>
+  <strong>Edad:</strong>
+  <%= @usuario.edad %>
+</p>
+
+<p>
   <strong>Email:</strong>
   <%= @usuario.email %>
 </p>
 
 <p>
-  <strong>Edad:</strong>
-  <%= @usuario.edad %>
+  <strong>Contraseña:</strong>
+  <%= @usuario.contrasena %>
+</p>
+
+<p>
+  <strong>Rol:</strong>
+          <%@rols.each do |rol| %>
+          <% if rol.id == @usuario.rol_id%>
+            <%=rol.nombre%>
+            <%end%>
+           <% end %>
 </p>
 
 <%= link_to 'Editar', edit_usuario_path(@usuario) %> |

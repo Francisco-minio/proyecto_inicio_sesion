@@ -10,15 +10,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_19_232346) do
+ActiveRecord::Schema.define(version: 202107202240129) do
 
-  create_table "usuarios", force: :cascade do |t|
+  create_table "mensajes", force: :cascade do |t|
+    t.text "content"
+    t.integer "usuario_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["usuario_id"], name: "index_mensajes_on_usuario_id"
+  end
+
+  create_table "roles", force: :cascade do |t|
     t.string "nombre"
-    t.string "apellido"
-    t.string "email"
-    t.integer "edad"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "rols", force: :cascade do |t|
+    t.string "nombre"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "usuarios", force: :cascade do |t|
+    t.string "nombre"
+    t.string "apellido"
+    t.integer "edad"
+    t.string "email"
+    t.string "contrasena"
+    t.integer "rol_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["rol_id"], name: "index_usuarios_on_rol_id"
+  end
+
+  add_foreign_key "mensajes", "usuarios"
+  add_foreign_key "usuarios", "rols"
 end

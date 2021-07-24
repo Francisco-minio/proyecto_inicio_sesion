@@ -1,7 +1,7 @@
 <%= form_with(model: usuario) do |form| %>
   <% if usuario.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(usuario.errors.count, "error") %> Encontramos los siguientes errores:</h2>
+      <h2><%= pluralize(usuario.errors.count, "error") %> Existen algunos problemas:</h2>
 
       <ul>
         <% usuario.errors.each do |error| %>
@@ -22,13 +22,26 @@
   </div>
 
   <div class="field">
+    <%= form.label :edad %>
+    <%= form.number_field :edad %>
+  </div>
+
+  <div class="field">
     <%= form.label :email %>
     <%= form.text_field :email %>
   </div>
 
   <div class="field">
-    <%= form.label :edad %>
-    <%= form.number_field :edad %>
+    <%= form.label :contrasena %>
+    <%= form.text_field :contrasena %>
+  </div>
+
+<div class="field">
+  <%= form.label :rol_id %>
+  <label for="usuario_rol_id">Rol</label>
+  <%= collection_select :usuario, :rol_id , Rol.all, :id, :nombre, :prompt => true  %>
+  </div>
+
   </div>
 
   <div class="actions">
